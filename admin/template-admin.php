@@ -84,7 +84,35 @@ desired effect
 
     <!-- Main content -->
     <section class="content container-fluid">
-
+<div class="col-sm-12">
+	<div class="box box-default">
+		<table class="table table-bordered">
+			<thead>
+				<tr>
+					<th>COL</th>
+					<th>COL</th>
+					<th>COL</th>
+					<th>COL</th>
+					<th>COL</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+						<th>--</th>
+						<th>--</th>
+						<th>--</th>
+						<th>--</th>
+						<th>--</th>
+						<td>
+							<a href="" class="btn btn-danger">Eliminar</a>
+							<a href="" class="btn btn-primary">Editar</a>
+						</td>
+					
+				</tr>
+			</tbody>
+		</table>
+	</div>
+</div>
       <!--------------------------
         | Your Page Content Here |
         -------------------------->

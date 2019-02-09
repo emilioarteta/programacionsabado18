@@ -65,7 +65,13 @@ desired effect
 
   <!-- Main Header -->
   <?php include 'includes/header.php'; ?>
-  
+<?php 
+  require "../conexion/conexion.php";
+$sql = "SELECT * from mensajes ORDER BY id DESC";
+$query = $connection->prepare($sql);
+$query->execute();
+$result=$query->fetchAll();
+   ?>
   <!-- Left side column. contains the logo and sidebar -->
  <?php include 'includes/aside.php'; ?>
   <!-- Content Wrapper. Contains page content -->
@@ -73,8 +79,8 @@ desired effect
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
-        Page Header
-        <small>Optional description</small>
+        Lista de Mensajes
+        <a href="" class=" disabled btn btn-success">+ Agregar</a>
       </h1>
       <ol class="breadcrumb">
         <li><a href="#"><i class="fa fa-dashboard"></i> Level</a></li>
@@ -84,7 +90,39 @@ desired effect
 
     <!-- Main content -->
     <section class="content container-fluid">
-
+<div class="col-sm-12">
+	<div class="box box-default">
+		<table class="table table-bordered">
+			<thead>
+				<tr>
+					<th>NOMBRE</th>
+					<th>EMAIL</th>
+					<th>ASUNTO</th>
+					<th>TELEFONO</th>
+					<th>MENSAJE</th>
+          <th>FECHA</th>
+          <th>ACCIONES</th>
+				</tr>
+			</thead>
+			<tbody>
+        <?php foreach ($result as $row) {?>
+				<tr>
+						<th> <?php echo $row ['nombre'];  ?></th>
+						<th><?php echo $row ['email'];  ?></th>
+						<th><?php echo $row ['asunto'];  ?></th>
+						<th><?php echo $row ['telefono'];  ?></th>
+						<th><?php echo $row ['mensaje'];  ?></th>
+            <th><?php echo $row ['fecha_add'];  ?></th>
+						<td>
+							<a href="mensajes-delete.php?id=<?php echo $row['Id']; ?>" class="btn btn-danger">Eliminar</a>
+							<a href="mensajes-update.php?id=<?php echo $row['Id']; ?>" class=" disabled btn btn-primary">Editar</a>
+						</td>
+				</tr>
+        <?php }  ?>
+			</tbody>
+		</table>
+	</div>
+</div>
       <!--------------------------
         | Your Page Content Here |
         -------------------------->

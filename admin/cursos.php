@@ -65,7 +65,13 @@ desired effect
 
   <!-- Main Header -->
   <?php include 'includes/header.php'; ?>
-  
+<?php 
+  require "../conexion/conexion.php";
+$sql = "SELECT * from cursos";
+$query = $connection->prepare($sql);
+$query->execute();
+$result=$query->fetchAll();
+   ?>
   <!-- Left side column. contains the logo and sidebar -->
  <?php include 'includes/aside.php'; ?>
   <!-- Content Wrapper. Contains page content -->
@@ -73,8 +79,8 @@ desired effect
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
-        Page Header
-        <small>Optional description</small>
+        Lista de Cursos
+        <a href="cursos-add.php" class="btn btn-success">+ Agregar</a>
       </h1>
       <ol class="breadcrumb">
         <li><a href="#"><i class="fa fa-dashboard"></i> Level</a></li>
@@ -84,7 +90,37 @@ desired effect
 
     <!-- Main content -->
     <section class="content container-fluid">
-
+<div class="col-sm-12">
+	<div class="box box-default">
+		<table class="table table-bordered">
+			<thead>
+				<tr>
+					<th>ID</th>
+					<th>NOMBRE</th>
+					<th>DIAS</th>
+					<th>DESCRIPCION</th>
+					<th>PASSWORD</th>
+          <th>ACCIONES</th>
+				</tr>
+			</thead>
+			<tbody>
+        <?php foreach ($result as $row) {?>
+				<tr>
+						<th><?php echo $row ['id'];  ?></th>
+						<th><?php echo $row ['nombre'];  ?></th>
+						<th><?php echo $row ['dias'];  ?></th>
+            <th><?php echo $row ['descipcion_corta'];  ?></th>
+					
+						<td>
+							<a href="cursos-delete.php?id=<?php echo $row['Id']; ?>" class="btn btn-danger">Eliminar</a>
+							<a href="cursos-update.php?id=<?php echo $row['Id']; ?>" class="btn btn-primary">Editar</a>
+						</td>
+				</tr>
+        <?php }  ?>
+			</tbody>
+		</table>
+	</div>
+</div>
       <!--------------------------
         | Your Page Content Here |
         -------------------------->

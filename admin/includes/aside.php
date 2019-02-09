@@ -1,3 +1,4 @@
+  <?php session_start() ?>
   <aside class="main-sidebar">
 
     <!-- sidebar: style can be found in sidebar.less -->
@@ -9,7 +10,7 @@
           <img src="dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
         </div>
         <div class="pull-left info">
-          <p>Emilio Arteta</p>
+          <p><?php echo $_SESSION['nombre_usuario'] ?></p>
           <!-- Status -->
           <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
         </div>
@@ -31,10 +32,10 @@
       <ul class="sidebar-menu" data-widget="tree">
         <li class="header">HEADER</li>
         <!-- Optionally, you can add icons to the links -->
-        <li class="active"><a href="#"><i class="fa fa-link"></i> <span>Cursos</span></a></li>
-        <li><a href="#"><i class="fa fa-link"></i> <span>Empresa</span></a></li>
-        <li><a href="#"><i class="fa fa-link"></i> <span>Usuarios</span></a></li>
-        <li><a href="#"><i class="fa fa-link"></i> <span>Banner</span></a></li>
+        <li class="active"><a href="index.php"><i class="fa fa-link"></i> <span>Inicio</span></a></li>
+        <li><a href="cursos.php"><i class="fa fa-link"></i> <span>Cursos</span></a></li>
+        <li><a href="mensajes.php"><i class="fa fa-link"></i> <span>Mensajes</span></a></li>
+        <li><a href="usuarios.php"><i class="fa fa-link"></i> <span>Usuarios</span></a></li>
         
       </ul>
       <!-- /.sidebar-menu -->
